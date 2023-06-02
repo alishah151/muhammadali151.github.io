@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Spiro Test</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="button.css">
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+</head>
+<body>
+  <div id="timetorender">0</div>
+  <div class="fullbg"></div>
+  <div class="left">
+  <canvas id="myCanvas" style="border:1px solid #d3d3d3;">
+  Your browser does not support the HTML5 canvas tag.</canvas>
+  </div>
+  <div class="right">
+    <button id="savetopng" class="action-button shadow animate btn-green" >View as PNG</button>
+    <button id="downloadbutton" class="action-button shadow animate btn-green" >Create PNG</button>
+    <a id="downloadlink" class="action-button shadow animate btn-gray disabled" href="#" download="download.png">Download</a>
+    <div class="option-cnt">
+      <div class="desc">Outer Circle</div>
+      <div class="dec">-</div>
+      <input type="text" value="200" >
+      <div class="inc">+</div>
+    </div>
+
+    <div class="option-cnt">
+      <div class="desc">Inner Circle</div>
+      <div class="dec">-</div>
+      <input type="text" value="70" >
+      <div class="inc">+</div>
+    </div>
+
+    <div class="option-cnt">
+      <div class="desc">Pen Dist</div>
+      <div class="dec">-</div>
+      <input type="text" value="50" >
+      <div class="inc">+</div>
+    </div>
+
+    <div class="option-cnt">
+      <div class="desc">Rotations</div>
+      <div class="dec">-</div>
+      <input type="text" value="10" >
+      <div class="inc">+</div>
+    </div>
+
+    <div class="option-cnt">
+      <div class="desc">Angle</div>
+      <div class="dec">-</div>
+      <input type="text" value="1" >
+      <div class="inc">+</div>
+    </div>
+
+    <div class="option-cnt isanimate">
+      <div class="desc">Animate</div>
+      <input type="checkbox" checked>
+    </div>
+
+    <div class="option-cnt isouter">
+      <div class="desc">Outer Circle</div>
+      <input type="checkbox" checked>
+    </div>
+
+    <div class="option-cnt isinner disabled">
+      <div class="desc">Inner Circle</div>
+      <input type="checkbox">
+    </div>
+  </div>
+
+
+
+</body>
+<script type="text/javascript" src="script/canvas2image.js"></script>
+<script type="text/javascript" src="script/events.js"></script>
+<script type="text/javascript" src="script/script.js"></script>
+</html>

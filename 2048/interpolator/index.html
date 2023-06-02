@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Muhammad Ali</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="interpolator.js" type="text/javascript">
+
+    </script>
+    <style>
+        body,html{
+            padding:0;
+            margin:0;
+            text-align: center;
+        }
+        #block {
+          font-size: 0;
+        }
+        .tenpx {
+          width: 3px;
+          height: 10px;
+          display: inline-block;
+        }
+        #error {
+          padding: 20px;
+          color: red;
+        }
+        #listColors {
+          padding: 20px;
+          color: Gray;
+        }
+        #reset {
+          display: block;
+          margin: 20px auto;
+        }
+
+    </style>
+
+</head>
+<body>
+  <div>
+    <ol>
+      <li>This is an Example of color interpolation.</li>
+      <li></li>
+      <li></li>
+      <li>Add Color Value in Hex</li>
+      <li>First Iteration value is ignored as nothing interpolate</li>
+      <li>Interations are number of points the color will interpolate to.</li>
+      <li>For Example user adds following values.</li>
+      <li>#F00  40</li>
+      <li>0F0  60</li>
+      <li>#0000FF  80</li>
+      <li>0000FFCC  150</li>
+      <li></li>
+      <li>First value of 40 will be ignored. after that color1 will interpolate to color2 in 60 iterations.</li>
+      <li>color2 will then interpolate to color3 in 80 iterations</li>
+      <li>color 3 will then interpolate to color4 in 150 iterations and you will get following result</li>
+    </ol>
+  </div>
+  <img src="img/interpolate.png">
+  <div id="error"></div>
+  <div id="listColors"></div>
+  <button id="reset">Reset</button>
+  <input id="inputcolor" placeholder="Add Color here">
+  <input id="inputIterations" placeholder="Add Iterations here">
+  <button id="add">Add</button>
+  <div id="block">
+
+  </div>
+<script>
+    window.onload = function () {
+      var it = interpolator(),
+          $parent = document.getElementById("block"),
+          iter = 0, span = [],
+          j = 0, result, colorArr = [];
+      var $color = document.getElementById("inputcolor"),
+          $iter = document.getElementById("inputIterations"),
+          $add = document.getElementById("add"),
+          $reset = document.getElementById("reset"),
+          $error = document.getElementById("error"),
+          $colorlist = document.getElementById("listColors");
+      function init() {
+        j=0;
+        console.log(colorArr, iter, span);
+        result = 0;
+        result = it.initWithHex(colorArr, iter, span);
+        if(result < 0) {
+          $error.innerHTML ="AN error has occured either add more colors or whatever";
+          return;
+        } else {
+          $error.innerHTML ="";
+        }
+
+        while ($parent.firstChild) {
+            $parent.removeChild($parent.firstChild);
+        }
+
+        function addColor() {
+          var each = document.createElement("div");
+          each.id = "color-" + j;
+          each.style.backgroundColor = it.getValue(j);
+          each.className += "tenpx";
+          $parent.append(each);
+          j++;
+        }
+        for(i=0; i< iter; i++) {
+          setTimeout(function () {
+            addColor();
+          },2*i);
+        }
+      }
+
+      $add.onclick  = function() {
+        if(!$color.value.trim()) return;
+        colorArr.push($color.value.trim());
+        if(colorArr.length > 1) {
+          span.push(parseInt($iter.value.trim()));
+          iter += parseInt($iter.value.trim());
+          $colorlist.innerHTML += "[" + $color.value.trim() + "], [" + ($iter.value.trim() || 0) + "]<br>";
+        } else {
+          $colorlist.innerHTML += "[" + $color.value.trim() + "]<br>";
+        }
+        $iter.value=0;
+        $color.value = "";
+        init();
+      };
+
+      $reset.onclick  = function() {
+        colorArr = [];
+        iter = 0;
+        $iter.value = '';
+        $color.value = '';
+        while ($colorlist.firstChild) {
+            $colorlist.removeChild($colorlist.firstChild);
+        }
+      };
+    };
+</script>
+</body>
+</html>
