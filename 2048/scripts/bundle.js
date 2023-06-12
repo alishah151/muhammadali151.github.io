@@ -2278,26 +2278,55 @@ window["setjsApp"] = /******/ (function (modules) {
           if (!_lang2) {
             success();
           } else {
-            $.getJSON(
-              "./muhammadali151.github.io/2048/data/lang/".concat(
-                _lang2,
-                ".json"
-              )
-            )
-              .done(function (_langData) {
-                _langData.lang = _lang2;
-                langData = _langData;
-                setbp_kernel_event_manager_js__WEBPACK_IMPORTED_MODULE_4__[
-                  "default"
-                ].raiseEvent(
-                  setbp_kernel_event_manager_js__WEBPACK_IMPORTED_MODULE_4__[
-                    "eventTypes"
-                  ].lang,
-                  langData
-                );
-                success();
-              })
-              .fail(error);
+            // $.getJSON(
+            //   "./muhammadali151.github.io/2048/data/lang/".concat(
+            //     _lang2,
+            //     ".json"
+            //   )
+            // )
+            //   .done(function (_langData) {
+            _langData = {
+              navigation: {
+                header: {
+                  language: "Language",
+                },
+              },
+              home: {
+                meta: {
+                  title: "SetJS Boilerplate - By State Empire",
+                  description:
+                    "SetJS is a rapid design and development system, which provides a lightweight and more stable alternative to today's heavy SPA frameworks.",
+                },
+              },
+              notFound: {
+                meta: {
+                  title: "Not Found",
+                  description: "The requested page does not exist",
+                },
+              },
+              error: {
+                meta: {
+                  title: "Error",
+                  description: "An error occurred",
+                },
+                connectionError:
+                  "An error occured. Make sure you are connected and try again.",
+                authError: "You are not authorized to view this page.",
+              },
+            };
+            _langData.lang = _lang2;
+            langData = _langData;
+            setbp_kernel_event_manager_js__WEBPACK_IMPORTED_MODULE_4__[
+              "default"
+            ].raiseEvent(
+              setbp_kernel_event_manager_js__WEBPACK_IMPORTED_MODULE_4__[
+                "eventTypes"
+              ].lang,
+              langData
+            );
+            success();
+            // })
+            // .fail(error);
           }
         }
 
