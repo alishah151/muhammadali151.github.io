@@ -2278,7 +2278,12 @@ window["setjsApp"] = /******/ (function (modules) {
           if (!_lang2) {
             success();
           } else {
-            $.getJSON("./data/lang/".concat(_lang2, ".json"))
+            $.getJSON(
+              "./muhammadali151.github.io/2048/data/lang/".concat(
+                _lang2,
+                ".json"
+              )
+            )
               .done(function (_langData) {
                 _langData.lang = _lang2;
                 langData = _langData;
