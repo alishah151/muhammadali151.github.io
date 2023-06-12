@@ -2285,7 +2285,7 @@ window["setjsApp"] = /******/ (function (modules) {
             //   )
             // )
             //   .done(function (_langData) {
-            _langData = {
+            var _langData = {
               navigation: {
                 header: {
                   language: "Language",
