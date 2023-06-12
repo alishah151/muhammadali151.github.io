@@ -2355,15 +2355,7 @@ window["setjsApp"] = /******/ (function (modules) {
           }
         }
 
-        Object(core_acts_funcs_js__WEBPACK_IMPORTED_MODULE_3__["addAction"])(
-          "setLang",
-          function (_ref2) {
-            var arg = _ref2.arg;
-            setLang(arg);
-          }
-        );
         /* harmony default export */ __webpack_exports__["default"] = {
-          setLang: setLang,
           initData: initData,
           init: function init() {
             languages =
@@ -2385,7 +2377,7 @@ window["setjsApp"] = /******/ (function (modules) {
               ].dataFile();
           },
           lang: function lang() {
-            return languages.length ? _lang2 : "";
+            return "";
           },
           isRtl: function isRtl(lang) {
             return lang == "ar";
